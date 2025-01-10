@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Escudero</title>
+    <style>
+        body {
+            background: linear-gradient(90deg, #0c1344 0%, #375060 50%, #2c406f 100%);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            opacity: 0;
+            text-align: center;
+            transition: opacity 2s cubic-bezier(0.5, 0, 0.5, 1);
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        h1, h2, h3 {
+            color: white;
+        }
+
+        .header {
+            background-color: rgba(152, 194, 244, 0.8);
+            color: #375060;
+            padding: 1.5rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin: 0;
+            margin-right: 60px;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 5rem;
+        }
+
+        .buttons-container a i{
+            color: #375060;
+            font-size: 4rem;
+            transition: transform 0.3s ease;
+        }
+
+        .buttons-container a:hover i {
+            transform: scale(1.2);
+        }
+
+        .dynamic-text {
+            display: inline;
+            color: #2c406f;
+            font-weight: bold;
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 3rem;
+        }
+
+        .profile-picture img {
+            width: 400px;
+            height: 600px;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            box-shadow: 0 0 20px rgba(152, 194, 244, 0.8),
+                        0 0 20px rgba(152, 194, 244, 0.4), 
+                        0 0 30px rgba(152, 194, 244, 0.2);
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .intro-text {
+            text-align: center;
+        }
+
+        .intro-text h2 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-text hr.name_bar {
+            width: 50%;
+            margin: 0.5rem auto 1.5rem auto;
+            border: 3.5px solid rgba(152, 194, 244, 0.8);
+            border-radius: 10px;
+        }
+
+        .intro-text h3 {
+            max-width: 750px;
+            margin-top: 1.5rem;
+            font-size: 2rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a i {
+            font-size: 4rem;
+            color: rgba(152, 194, 244, 0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover i {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.15rem;
+            }
+
+            .buttons-container {
+                gap: 1.5rem;
+            }
+            
+            .buttons-container a i{
+                font-size: 2rem;
+            }
+
+            .profile-picture img {
+                width: 200px;
+                height: 300px;
+            }
+
+            .intro-text h2 {
+                font-size: 2rem;
+            }
+
+            .intro-text h3 {
+                font-size: 1rem;
+            }
+
+            .social-links a i{
+            font-size: 2rem;
+            }
+
+            .footer {
+                padding: .5rem;
+                background-color: rgba(0, 0, 0, 0.4)
+            }
+        }
+
+    </style>
+    <script>
+        const texts = ["Current Sundevil", "Software Engineer", "Developer", "Web Designer", "Problem Solver"];
+        let speed = 100;
+        let textIndex = 0;
+        let charIndex = 0;
+
+        function typeWriter() {
+            const textElement = document.querySelector(".dynamic-text");
+            if (charIndex < texts[textIndex].length) {
+                textElement.innerHTML += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, speed);
+            } else {
+                setTimeout(eraseText, 1000);
+            }
+        }
+
+        function eraseText() {
+            const textElement = document.querySelector(".dynamic-text");
+            if (textElement.innerHTML.length > 0) {
+                textElement.innerHTML = textElement.innerHTML.slice(0, -1);
+                setTimeout(eraseText, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                charIndex = 0;
+                setTimeout(typeWriter, 500);
+            }
+        }
+
+        var images = [], x = 0;
+        images[0] = "Facetune_20-04-2023-11-21-58 2.jpeg";
+        images[1] = "IMG_0927.jpeg";
+        images[2] = "IMG_0624.jpeg";
+
+        function displayNextImage() {
+            var img = document.getElementById("profile-img");
+
+            img.style.opacity = 0;
+
+            setTimeout(function () {
+                x = (x === images.length - 1) ? 0 : x + 1;
+                img.src = images[x];
+                img.style.opacity = 1;
+            }, 1000);
+        }
+
+        function startTimer() {
+            setInterval(displayNextImage, 5000);
+        }
+
+        function fadeIn() {
+            document.body.style.opacity = 1;
+        }
+
+        window.onload = function () {
+            var img = document.getElementById("profile-img");
+            img.style.opacity = 1;
+            startTimer();
+            fadeIn();
+            typeWriter();
+        };
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Alan Escudero | <span class="dynamic-text"></span></h1>
+        <div class="buttons-container">
+            <div class="contact-button">
+                <a href="mailto:alanescudero@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+            <div class="resume-button">
+                <a href="Alan-Escudero-Resume-2025.jpg" download="Alan-Escudero-Resume-2025">
+                    <i class="fa-solid fa-file"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="intro-text">
+            <h2>Hey user! I'm Alan.</h2>
+            <hr class="name_bar">
+        </div>
+
+        <div class="profile-picture">
+            <img id="profile-img" src="Facetune_20-04-2023-11-21-58 2.jpeg" alt="Alan Escudero">
+        </div>
+
+        <div class="intro-text">
+            <h3>
+                Hello! My name is Alan Escudero. A current Junior at Arizona State University studying Computer Science. 
+                During my start in software development, I have grown an interest towards developing websites. Feel free 
+                to check on how I will grow this passion through my future work below. Thank you for your time.
+            </h3>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/alanesc__/">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://app.joinhandshake.com/profiles/50998369">
+                <i class="fa-solid fa-handshake"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/alan-escudero/">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Alanesc2">
+                <i class="fa-brands fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Alan Escudero. All Rights Reserved.</p>
+    </div>
+
+</body>
+
+</html>
