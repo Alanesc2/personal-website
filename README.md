@@ -1,3 +1,5 @@
+# Personal Website
+
 Welcome to my simple website project!
 
 🚀 Technologies Used
