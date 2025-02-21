@@ -4,8 +4,8 @@ Welcome to my simple website project!
 
 🚀 Technologies Used
 
-HTML: The base of the website. \n
-CSS: Elevate your design game with this framework. \n
+HTML: The base of the website. 
+CSS: Elevate your design game with this framework. 
 JavaScript: The creator of the live website behavior.
 ✨ Key Features
 
