@@ -1,0 +1,352 @@
+.spline-section {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+}
+
+spline-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(180deg, black 10%, #414242 50%, rgb(82, 81, 81) 100%);
+    background-attachment: relative;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    transition: opacity 2s cubic-bezier(0.5, 0, 0.5, 1);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+button, 
+.contact-buttons a, 
+.skills i, 
+.social-links i, 
+.card {
+    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover, 
+.contact-buttons a:hover, 
+.skills i:hover, 
+.social-links i:hover, 
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card {
+    width: 250px;
+    height: 350px;
+    background: #07192e;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 50px;
+    perspective: 1000px; 
+    transition: transform 0.6s ease, box-shadow 0.6s ease; 
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 20px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; 
+    transition: transform 0.6s ease;
+    z-index: 2;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+}
+
+.card-front img {
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover; 
+    z-index: 2;
+}
+
+.card-back {
+    background-color: #07192e;
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; 
+}
+
+.card-text {
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: white;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 200px; 
+    height: 300px; 
+    background-image: linear-gradient(180deg, rgb(110, 174, 204), rgb(30, 166, 230));
+    top: -10%;
+    left: -10%;
+    animation: rotBGimg 3s linear infinite;
+    z-index: 0;
+    opacity: 0.8;
+    border-radius: 25px;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    background: #07192e;
+    inset: 4px;
+    border-radius: 16px;
+    z-index: 1;
+}
+
+@keyframes rotBGimg {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); 
+    box-shadow: 0px 0px 20px 5px rgba(127, 129, 130, 0.7), 0px 0px 30px 10px rgba(103, 113, 118, 0.7); /* Glowing effect */
+}
+
+.content-section {
+    position: relative;
+    z-index: 2;
+}
+
+.current-projects {
+    background: linear-gradient(180deg, rgb(82, 81, 81) 0%, #9d9e9e 50%,#FFFFFF 100%);
+    padding: 10% 10%;
+    position: relative;
+    z-index: 0;
+}
+
+.current-projects h1 {
+    text-align: center;
+    font-size: 5vw;
+    color: white;
+}
+
+.dynamic-text {
+    display: inline;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+div {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+    display: block;
+    padding: 0;
+}
+
+.header {
+    background-color: rgba(50, 50, 50, 0.8);
+    color: #FFFFFF;
+    padding: 2vw 2vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 3vw;
+    white-space: nowrap;
+}
+
+
+
+.contact-buttons {
+    position: absolute;
+    font-size: 1.75vw;
+    top: 27.5%; 
+    right: 5%; 
+    display: flex;
+    gap: 15px;
+}
+
+.profile-picture {
+    margin-top: 45px;
+}
+
+.profile-picture img {
+    width: 35vw;
+    max-width: 300px;
+    height: auto;
+    padding: 5px;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.intro-text {
+    text-align: center;
+    margin-top: 120px;
+    color: white;
+}
+
+.intro-text h2 {
+    color: white;
+    font-size: 5vw;
+    margin: 10px 0;
+}
+
+.name_bar {
+    border: none;
+    width: 25%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        rgba(0,183,255,0.8),
+        rgba(255,48,255,0.8));
+    border-radius: 2px;
+    position: relative;
+    overflow: visible;
+    transition: all 0.2s ease-out;
+    will-change: transform, background, box-shadow;
+}
+
+.name_bar::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: inherit;
+    filter: blur(10px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.intro-text h3 {
+    font-size: 2vw;
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Social links */
+.social-links {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.social-links a {
+    margin: 0 1vw;
+}
+
+.social-links a i {
+    font-size: 6vw;
+}
+
+.social-links img {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.skills {
+    background: #FFFFFF 100%;
+    padding: 10% 10% 5% 10%;
+    position: relative;
+    z-index: 0;
+}
+
+.skills i {
+    font-size: 4vw;
+}
+
+@media screen and (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+    }
+    
+    .card {
+        margin: 20px auto;
+        width: 190px;
+        height: 254px;
+    }
+
+    .header h1 {
+        font-size: 4vw;
+    }
+
+    .contact-buttons {
+        font-size: 2.5vw;
+        right: 7.5%;
+    }
+    
+    .profile-picture img {
+        width: 70vw;
+    }
+    
+    .intro-text h2 {
+        font-size: 8vw;
+    }
+    
+    .intro-text hr.name_bar {
+        width: 60vw;
+        height: 4px; 
+        background-color: white; 
+        position: relative; 
+        transition: transform 0.02s linear;
+    }
+    
+    .intro-text h3 {
+        font-size: 4vw;
+        width: 90%;
+    }
+    
+    .social-links a i,
+    .social-links img {
+        font-size: 8vw;
+    }
+
+    .skills i {
+        font-size: 8vw;
+    }
+}
